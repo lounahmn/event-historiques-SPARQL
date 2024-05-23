@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="cssmap-europe/cssmap-europe/cssmap-europe.css" media="screen" />
+    <title>Projet SPARQL</title>
+</head>
+<body>
+    <div class="container" id="main">
+        <div class="flex flex-wrap flex-row mx-auto items-center">
+            <div class="xl:w-1/4 sm:w-3/4" id="leftText">
+                <h2 class="font-bold text-5xl my-4 mx-auto">Bienvenue</h2>
+                <p class="w-full text-lg text-center font-bold">Parcourez les périodes afin d'en savoir plus sur les évenements historiques en Europe</p>
+                <p class="w-full my-2 text-lg text-center ">Cliquez sur un pays pour commencer</p>
+                <p class="w-full font-bold text-3xl text-center">OU</p>
+                <button class="text-2xl text-center" id="buttonDecouvrir">Découvrir un pays</button>
+            </div>
+            <div id="map-europe" class="xl:w-2/4 sm:w-3/4">
+                <ul class="europe">
+                    <div w3-include-html="countries.html"></div>
+                    <li class="eu1"><a href="#albanie">Albanie</a></li>
+                    <li class="eu2"><a href="#andorre">Andorre</a></li>
+                    <li class="eu3"><a href="#autriche">Autriche</a></li>
+                    <li class="eu4"><a href="#bielorussie">Biélorussie</a></li>
+                    <li class="eu5"><a href="#belgique">Belgique</a></li>
+                    <li class="eu6"><a href="#bosnie-herzegovine">Bosnie-Herzégovine</a></li>
+                    <li class="eu7"><a href="#bulgarie">Bulgarie</a></li>
+                    <li class="eu8"><a href="#croatie">Croatie</a></li>
+                    <li class="eu9"><a href="#chypre">Chypre</a></li>
+                    <li class="eu10"><a href="#republique-tcheque">République Tchèque</a></li>
+                    <li class="eu11"><a href="#danemark">Danemark</a></li>
+                    <li class="eu12"><a href="#estonie">Estonie</a></li>
+                    <li class="eu13"><a href="#france">France</a></li>
+                    <li class="eu14"><a href="#finlande">Finlande</a></li>
+                    <li class="eu16"><a href="#allemagne">Allemagne</a></li>
+                    <li class="eu17"><a href="#grece">Grèce</a></li>
+                    <li class="eu18"><a href="#hongrie">Hongrie</a></li>
+                    <li class="eu19"><a href="#islande">Islande</a></li>
+                    <li class="eu20"><a href="#irlande">Irlande</a></li>
+                    <li class="eu21"><a href="#saint-marin">Saint-Marin</a></li>
+                    <li class="eu22"><a href="#italie">Italie</a></li>
+                    <li class="eu23"><a href="#kosovo">Kosovo</a></li>
+                    <li class="eu24"><a href="#lettonie">Lettonie</a></li>
+                    <li class="eu25"><a href="#liechtenstein">Liechtenstein</a></li>
+                    <li class="eu26"><a href="#lituanie">Lituanie</a></li>
+                    <li class="eu27"><a href="#luxembourg">Luxembourg</a></li>
+                    <li class="eu28"><a href="#macedoine-du-nord">Macédoine du Nord</a></li>
+                    <li class="eu29"><a href="#malte">Malte</a></li>
+                    <li class="eu30"><a href="#moldavie">Moldavie</a></li>
+                    <li class="eu31"><a href="#monaco">Monaco</a></li>
+                    <li class="eu32"><a href="#montenegro">Monténégro</a></li>
+                    <li class="eu33"><a href="#pays-bas">Pays-Bas</a></li>
+                    <li class="eu34"><a href="#norvege">Norvège</a></li>
+                    <li class="eu35"><a href="#pologne">Pologne</a></li>
+                    <li class="eu36"><a href="#portugal">Portugal</a></li>
+                    <li class="eu37"><a href="#roumanie">Roumanie</a></li>
+                    <li class="eu38"><a href="#russie">Russie</a></li>
+                    <li class="eu39"><a href="#serbie">Serbie</a></li>
+                    <li class="eu40"><a href="#slovaquie">Slovaquie</a></li>
+                    <li class="eu41"><a href="#slovenie">Slovénie</a></li>
+                    <li class="eu42"><a href="#espagne">Espagne</a></li>
+                    <li class="eu43"><a href="#suede">Suède</a></li>
+                    <li class="eu44"><a href="#suisse">Suisse</a></li>
+                    <li class="eu45"><a href="#turquie">Turquie</a></li>
+                    <li class="eu46"><a href="#ukraine">Ukraine</a></li>
+                    <li class="eu47"><a href="#royaume-uni">Royaume-Uni</a></li>
+                </ul>                
+            </div>
+        </div>
+
+        <div id="frise-country">
+            <div class="my-4" id="top-country">
+                <a href="#" id="close-button" class="absolute top-4 right-4 text-white cursor-pointer text-4xl">✖</a>
+                <h1 class="font-bold text-white text-center text-4xl my-2" id="country"></h1>
+            </div>
+            <div id="content-country">
+                <div id="choixPeriode">
+                    <h2 id="epoqueTitre" class="w-full text-3xl text-center font-bold my-4">Quelle époque voulez-vous découvrir ?</h2>
+                    <div class="flex w-full mx-auto align-middle mt-4" id="containerTimeline">
+                        <div class="w-1/4 parent-period">
+                            <div class="era" id="time1">
+                                <span data-era="1">Antiquité</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 parent-period">
+                            <div class="era" id="time2">
+                                <span data-era="2">Moyen-Âge</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 parent-period">
+                            <div class="era" id="time3">
+                                <span data-era="3">Époque Moderne</span>
+                            </div>
+                        </div>
+                        <div class="w-1/4 parent-period">
+                            <div class="era" id="time4">
+                                <span data-era="4">Époque<br> Contemporaine</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="informationsPeriode">
+                    <img src="./img/retour.png" id="retour">
+                    <h2 id="phraseResult" class="w-full text-3xl text-center font-bold mt-4"></h2>           
+                    <!-- <form class="max-w-md mx-auto mb-4">   
+                        <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chercher un évènement en particulier" />
+                        </div>
+                    </form> -->
+                    <div class="flex items-center">
+                        <img src="./img/left.png" class="arrow invisible" data-direction="prev">
+                        <div id="cardsPeriode" class="flex justify-center flex-wrap flex-row mt-10">
+                            <div class="w-1/4 mx-4 rounded overflow-hidden shadow-lg card invisible" data-index="1">
+                                <img class="w-full h-48 cardPicture" src="" alt="">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2 titre"></div>
+                                    <p class="text-gray-700 text-base inline date"></p>
+                                    <p class="text-gray-700 text-base inline datefin"></p>
+                                    <p class="text-gray-700 text-base location"></p>
+                                    <p class="about text-blue-500 underline text-right" data-index="1">En savoir plus</p>
+
+
+                                </div>
+
+                                <div class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 hidden" id="popup1">
+                                    <div class="bg-white p-4 rounded shadow-lg m-6">
+                                      <div class="flex justify-between items-center mb-4">
+                                        <h2 class="text-lg font-bold popup-title"></h2>
+                                        <button class="text-gray-600 hover:text-gray-800" id="closePopup">×</button>
+                                      </div>
+                                      <p class="popup-content"></p>
+                                    </div>
+                                  </div>
+                                  
+                            </div>
+                            <div class="w-1/4 mx-4 rounded overflow-hidden shadow-lg card invisible" data-index="2">
+                                <img class="w-full h-48 cardPicture" src="" alt="">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2 titre"></div>
+                                    <p class="text-gray-700 text-base inline date"></p>
+                                    <p class="text-gray-700 text-base inline datefin"></p>
+                                    <p class="text-gray-700 text-base location"></p>
+                                    <p class="about text-blue-500 underline text-right" data-index="2">En savoir plus</p>
+
+                                </div>
+
+                                <div class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 hidden" id="popup2">
+                                    <div class="bg-white p-4 rounded shadow-lg m-6">
+                                      <div class="flex justify-between items-center mb-4">
+                                        <h2 class="text-lg font-bold popup-title"></h2>
+                                        <button class="text-gray-600 hover:text-gray-800" id="closePopup">×</button>
+                                      </div>
+                                      <p class="popup-content"></p>
+                                    </div>
+                                  </div>
+                                  
+                            </div>
+                            <div class="w-1/4 mx-4 rounded overflow-hidden shadow-lg card invisible" data-index="3">
+                                <img class="w-full h-48 cardPicture" src="" alt="">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2 titre"></div>
+                                    <p class="text-gray-700 text-base inline date"></p>
+                                    <p class="text-gray-700 text-base inline  datefin"></p>
+                                    <p class="text-gray-700 text-base location"></p>
+                                    <p class="about text-blue-500 underline text-right" data-index="3">En savoir plus</p>
+                                </div>
+
+                                <div class="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 hidden" id="popup3">
+                                    <div class="bg-white p-4 rounded shadow-lg m-6">
+                                      <div class="flex justify-between items-center mb-4">
+                                        <h2 class="text-lg font-bold popup-title"></h2>
+                                        <button class="text-gray-600 hover:text-gray-800" id="closePopup">×</button>
+                                      </div>
+                                      <p class="popup-content"></p>
+                                    </div>
+                                  </div>
+                                  
+                            </div>
+                        </div>
+                        <img src="./img/right.png" class="arrow invisible" data-direction="next">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cssmapsplugin.com/5/jquery.cssmap.min.js"></script>
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
